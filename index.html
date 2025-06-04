@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game List</title>
+  <style>
+    .example {
+  font-family: "anek-latin-variable",sans-serif;
+  font-variation-settings: 'wght' 500, 'wdth' 100;
+}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3e5f5; /* Light purple */
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    img {
+      max-width: 100%;
+      height: 150px;
+      display: block;
+      margin: 0 auto;
+        border-radius: 100%;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #6a1b9a; /* Dark purple */
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      cursor: pointer;
+      color: #6a1b9a;
+      text-decoration: underline;
+    }
+    .game-details {
+      display: none;
+      margin-top: 20px;
+    }
+    .game-details h2 {
+      margin: 0;
+      color: #6a1b9a;
+    }
+    .game-details p {
+      margin: 5px 0;
+    }
+    .game-details a {
+      color: #6a1b9a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .game-details a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mis Juegos</h1>
+    <ul id="game-list">
+      <!-- Game list will be dynamically populated -->
+   
+    <div class="game-details" id="game-details">
+      <h2 id="game-name"></h2>
+      <img src="https://ugc.production.linktr.ee/f2e8808b-0f1c-444a-8b6d-1d1d28c2e2b4_5b2c10c1-7d12-4714-a6e1-8c0dc2e82e50.png?io=true&size=avatar-v3_0" alt="">
+      <p><strong>ID:</strong> <span id="user-id"></span></p>
+      <a id="profile-link" href="#" target="_blank">Ver Perfil</a>
+    </div>
+</ul>
+  </div>
+
+  <script>
+    // Define the games as objects
+    const games = [
+      { name: "Epic", userId: "Hello_iam_Milo", profileUrl: "https://store.epicgames.com/u/a6ac0038dec84d19ad9606ea6f439592" },
+      { name: "Steam", userId: "Hola Soy Milo", profileUrl: "https://steamcommunity.com/profiles/76561199084822477/" },
+      { name: "Xbox", userId: "MrMilo0w0", profileUrl: "https://www.xbox.com/es-AR/play/user/MrMilo0w0" },
+      { name: "Grounded", userId: "MrMilo0w0", profileUrl: "https://example.com/profile1" },
+      { name: "Roblox", userId: "dany17electric", profileUrl: "https://www.roblox.com/es/users/879616051/profile" },
+      { name: "Genshin", userId: "176088534", profileUrl: "https://example.com/profile3" },
+      { name: "VrChat", userId: "Hola Soy Milo", profileUrl: "https://vrchat.com/home/user/usr_a335cc1e-7778-4f54-9e93-da59dfb092d5" },
+      { name: "CODM", userId: "Miloo_sin_J", profileUrl: "https://example.com/profile2" },
+      { name: "Valorant", userId: "Hola soy Milo#Sin J", profileUrl: "https://example.com/profile3" }
+    ];
+
+    // Populate the game list
+    const gameList = document.getElementById('game-list');
+    const gameDetails = document.getElementById('game-details');
+    const gameName = document.getElementById('game-name');
+    const userId = document.getElementById('user-id');
+    const profileLink = document.getElementById('profile-link');
+
+    games.forEach((game, index) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = game.name;
+      listItem.addEventListener('click', () => {
+        // Show game details when clicked
+        gameName.textContent = game.name;
+        userId.textContent = game.userId;
+        profileLink.href = game.profileUrl;
+        profileLink.textContent = "Ver perfil de " + game.name;
+        gameDetails.style.display = 'block';
+      });
+      gameList.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
